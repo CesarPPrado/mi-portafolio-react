@@ -1,0 +1,23 @@
+/* src/index.css */
+
+/* 1. Definición de variables de color globales en el selector :root */
+:root {
+  --color-primario: #1abc9c;      /* Turquesa */
+  --color-secundario: #2c3e50;   /* Azul oscuro (fondo) */
+  --color-terciario: #34495e;    /* Azul medio (tarjetas) */
+  --color-texto-principal: #ecf0f1; /* Blanco */
+  --color-borde: #7f8c8d;        /* Gris */
+}
+
+/* 2. Reseteo y estilos base para el body */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-secundario); /* Usamos la variable de color */
+  color: var(--color-texto-principal);
+  font-family: Arial, sans-serif;
+}
