@@ -1,0 +1,19 @@
+/* src/components/ProjectsGrid.module.css */
+.proyectosSection {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.proyectosSection h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.proyectosGrid {
+    display: grid;
+    /* Columnas responsivas: se adaptan al ancho disponible */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px; /* Espacio entre las tarjetas */
+}

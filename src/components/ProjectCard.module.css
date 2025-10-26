@@ -1,0 +1,19 @@
+/* src/components/ProjectCard.module.css */
+.card {
+    background-color: var(--color-terciario);
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    padding: 25px;
+    /* Transición para efectos de hover */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Eleva la tarjeta al pasar el cursor */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra para profundidad */
+}
+
+.card h3 {
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}

@@ -1,15 +1,18 @@
 // src/App.jsx
 import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx'; // 1. Importa el componente Hero
+import Hero from './components/Hero.jsx';
+import ProjectsGrid from './components/ProjectsGrid.jsx'; // 1. Importar ProjectsGrid
+
 function App() {
   return (
     <div>
       <Header />
       <main>
-        <Hero /> {/* 2. Usa el componente Hero */}
-        {/* La sección de proyectos irá aquí más adelante */}
+        <Hero />
+        <ProjectsGrid /> {/* 2. Usar el componente del grid */}
       </main>
     </div>
   );
 }
+
 export default App;
