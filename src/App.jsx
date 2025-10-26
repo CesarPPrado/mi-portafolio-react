@@ -1,7 +1,8 @@
 // src/App.jsx
-import Header from './components/Header.jsx';
-import Hero from './components/Hero.jsx';
-import ProjectsGrid from './components/ProjectsGrid.jsx'; // 1. Importar ProjectsGrid
+import Header from './components/Header.jsx'; // Importar Header
+import Hero from './components/Hero.jsx'; // Importar Hero
+import ProjectsGrid from './components/ProjectsGrid.jsx'; // Importar ProjectsGrid
+import Footer from './components/Footer.jsx'; // Importar Footer
 
 function App() {
   return (
@@ -9,8 +10,9 @@ function App() {
       <Header />
       <main>
         <Hero />
-        <ProjectsGrid /> {/* 2. Usar el componente del grid */}
+        <ProjectsGrid />
       </main>
+      <Footer /> {/* 2. Usar el componente Footer al final */}
     </div>
   );
 }

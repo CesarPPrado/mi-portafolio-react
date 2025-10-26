@@ -1,0 +1,13 @@
+/* src/components/Footer.module.css */
+.footer {
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px; /* Espacio superior para separarlo del contenido */
+    border-top: 1px solid var(--color-borde); /* Línea sutil de separación */
+    background-color: var(--color-secundario); /* Mismo fondo que el body */
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: var(--color-borde); /* Un color más sutil para el texto */
+}
