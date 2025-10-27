@@ -16,7 +16,7 @@ function ProjectsGrid() {
   //    El arreglo vacío al final `[]` asegura que esto se ejecute solo una vez.
   useEffect(() => {
     // 4. Usar la API fetch del navegador para llamar a nuestro backend
-    fetch('http://localhost:3001/api/proyectos')
+    fetch(`${import.meta.env.VITE_API_URL}/api/proyectos`)
       .then(response => response.json()) // Convertir la respuesta a JSON
       .then(data => {
         // 5. Guardar los datos de la API en nuestro estado
