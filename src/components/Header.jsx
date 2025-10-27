@@ -1,17 +1,18 @@
 // src/components/Header.jsx
-
-import styles from './Header.module.css'; // 1. Importamos el archivo CSS
+import { Link } from 'react-router-dom'; // 1. Importar 'Link'
+import styles from './Header.module.css';
 
 function Header() {
-  // 2. Usamos "className" en lugar de "class" y aplicamos los estilos importados
   return (
     <header className={styles.header}>
-      <h1 id="titulo-principal">Mi Portafolio Personal</h1>
+      {/* 2. Cambiar la etiqueta <a> por 'Link' y 'href' por 'to' */}
+      <Link to="/" id="titulo-principal">Mi Portafolio Personal</Link>
       <nav>
         <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Proyectos</a></li>
-          <li><a href="#">Contacto</a></li>
+          {/* 3. Hacer lo mismo para todos los enlaces de navegación */}
+          <li><Link to="/">Inicio</Link></li>
+          <li><Link to="/proyectos">Proyectos</Link></li>
+          <li><Link to="/contacto">Contacto</Link></li>
         </ul>
       </nav>
     </header>
