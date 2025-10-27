@@ -1,15 +1,10 @@
 // src/components/ProjectsGrid.jsx
-import { useState, useEffect } from 'react'; // 1. Importar Hooks de React
+import { useState, useEffect } from 'react';
 import ProjectCard from './ProjectCard.jsx';
 import styles from './ProjectsGrid.module.css';
 
-/**
- * Componente que muestra una cuadrícula de proyectos,
- * obteniendo los datos dinámicamente desde la API.
- */
-function ProjectsGrid() {
-  // 2. Crear un "estado" para almacenar la lista de proyectos.
-  //    Inicia como un arreglo vacío.
+// 1. Acepta la nueva prop "showTitle", con "true" como valor por defecto
+function ProjectsGrid({ showTitle = true }) {
   const [projects, setProjects] = useState([]);
 
   // 3. Usar "useEffect" para ejecutar código cuando el componente se monta.
@@ -28,21 +23,20 @@ function ProjectsGrid() {
       });
   }, []); // El arreglo vacío significa "ejecutar solo al montar"
 
-  return (
+return (
     <section id="proyectos" className={styles.proyectosSection}>
-      <h2>Mis Proyectos</h2>
+      
+      {/* 2. Renderiza el título H2 SÓLO SI showTitle es true */}
+      {showTitle && <h2>Mis Proyectos</h2>}
+
       <div className={styles.proyectosGrid}>
-        
-        {/* 6. Mapear (recorrer) el estado "projects" y renderizar 
-               un ProjectCard por cada uno. */}
         {projects.map(project => (
           <ProjectCard 
-            key={project.id} // "key" es un prop especial y requerido en React para las listas
+            key={project.id}
             title={project.title} 
             description={project.description} 
           />
         ))}
-
       </div>
     </section>
   );

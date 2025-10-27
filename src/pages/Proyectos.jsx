@@ -4,9 +4,11 @@ import ProjectsGrid from '../components/ProjectsGrid.jsx';
 function Proyectos() {
   return (
     <div>
-      {/* Este título es opcional, pero ayuda a saber que estamos en una nueva página */}
       <h1 style={{ textAlign: 'center', margin: '20px 0' }}>Mis Proyectos</h1>
-      <ProjectsGrid />
+      
+      {/* 1. Pasa la nueva prop 'showTitle' como 'false' */}
+      <ProjectsGrid showTitle={false} />
+      
     </div>
   );
 }

@@ -6,7 +6,7 @@ function Header() {
   return (
     <header className={styles.header}>
       {/* 2. Cambiar la etiqueta <a> por 'Link' y 'href' por 'to' */}
-      <Link to="/" id="titulo-principal">Mi Portafolio Personal</Link>
+      <Link to="/" className={styles.logoLink}>Mi Portafolio Personal</Link>
       <nav>
         <ul>
           {/* 3. Hacer lo mismo para todos los enlaces de navegación */}

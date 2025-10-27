@@ -9,9 +9,17 @@
     background-color: #2c3e50; /* Añadimos el fondo aquí */
 }
 
-.header h1 {
-    margin: 0; /* Quitamos el margen por defecto del h1 */
-    color: #1abc9c;
+/* 1. Estilos para el enlace del título (logo) */
+.logoLink {
+  color: var(--color-primario);
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* 2. Regla clave: Asegura que el color no cambie al ser visitado */
+.logoLink:visited {
+  color: var(--color-primario);
 }
 
 .header nav ul {
@@ -26,11 +34,17 @@
 }
 
 .header nav a {
-    color: #ecf0f1;
+    color: var(--color-texto-principal);
     text-decoration: none;
     font-weight: bold;
 }
 
+/* 4. Regla clave: Asegura que los enlaces de nav no cambien al ser visitados */
+.header nav a:visited {
+    color: var(--color-texto-principal);
+}
+
+/* 5. Estilo hover (este ya debería existir) */
 .header nav a:hover {
-    color: #1abc9c;
+    color: var(--color-primario);
 }
