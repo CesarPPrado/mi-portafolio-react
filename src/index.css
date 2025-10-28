@@ -1,23 +1,47 @@
 /* src/index.css */
-
-/* 1. Definición de variables de color globales en el selector :root */
 :root {
-  --color-primario: #1abc9c;      /* Turquesa */
-  --color-secundario: #2c3e50;   /* Azul oscuro (fondo) */
-  --color-terciario: #34495e;    /* Azul medio (tarjetas) */
-  --color-texto-principal: #ecf0f1; /* Blanco */
-  --color-borde: #7f8c8d;        /* Gris */
+  --color-primario: #007BFF;       /* Azul para títulos y botones */
+  --color-secundario: #ffffff;     /* Fondo de la página (Blanco) */
+  --color-terciario: #ffffff;      /* Fondo de tarjetas y header (Blanco) */
+  --color-texto-principal: #212529; /* Texto principal (Negro) */
+  --color-texto-secundario: #ffffff; /* Texto para botones (Blanco) */
+  --color-borde: #dee2e6;         /* Borde sutil para tarjetas */
+  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra para tarjetas */
+  --color-texto-enlaces: var(--color-primario);
+  --color-texto-footer: var(--color-primario);
 }
 
-/* 2. Reseteo y estilos base para el body */
+/* Variables para el Modo Oscuro */
+.dark {
+  --color-primario: #007BFF;       /* Azul (se mantiene) */
+  --color-secundario: #033159;     /* Fondo de la página (Azul Oscuro) */
+  --color-terciario: #033159;      /* Fondo de tarjetas y header (Azul Oscuro) */
+  --color-texto-principal: #ffffff; /* Texto principal (Blanco) */
+  --color-texto-secundario: #ffffff; /* Texto para botones (Blanco) */
+  --color-borde: #007BFF;         /* Borde Azul para tarjetas */
+  --shadow-card: none;             /* Sin sombra */
+  --color-texto-enlaces: var(--color-texto-principal);
+  --color-texto-footer: var(--color-borde);
+}
+
+/* Reseteo y estilos base */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 body {
-  background-color: var(--color-secundario); /* Usamos la variable de color */
-  color: var(--color-texto-principal);
   font-family: Arial, sans-serif;
+}
+
+/* --- NUEVA CLASE PARA TÍTULOS DE PÁGINA --- */
+.page-title {
+  /* 1. Usa la variable de color de enlaces (Azul/Blanco) */
+  color: var(--color-texto-enlaces);
+
+  /* 2. Mantiene los estilos que ya tenías */
+  text-align: center;
+  margin: 30px 0; /* Un margen vertical unificado */
 }

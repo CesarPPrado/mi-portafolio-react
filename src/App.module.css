@@ -1,0 +1,19 @@
+/* src/App.module.css */
+
+.appWrapper {
+  /* 1. Aplicamos los colores base aquí (en lugar del body) */
+  background-color: var(--color-secundario);
+  color: var(--color-texto-principal);
+
+  /* 2. Aseguramos que ocupe al menos toda la altura de la pantalla */
+  min-height: 100vh;
+
+  /* 3. Usamos flexbox para que el footer se quede abajo (buena práctica) */
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  /* 4. Esto hace que el contenido principal crezca y empuje el footer */
+  flex-grow: 1;
+}

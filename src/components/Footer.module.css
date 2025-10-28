@@ -9,5 +9,5 @@
 
 .footer p {
     font-size: 0.9rem;
-    color: var(--color-borde); /* Un color más sutil para el texto */
+    color: var(--color-texto-footer);
 }

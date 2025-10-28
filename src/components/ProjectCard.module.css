@@ -6,6 +6,7 @@
     padding: 25px;
     /* Transición para efectos de hover */
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: var(--shadow-card);
 }
 
 .card:hover {
@@ -16,4 +17,8 @@
 .card h3 {
     color: var(--color-primario);
     margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--color-texto-principal);
 }
