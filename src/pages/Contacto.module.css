@@ -1,0 +1,80 @@
+/* src/pages/Contacto.module.css */
+
+.contactContainer {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: var(--color-terciario);
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  box-shadow: var(--shadow-card);
+}
+
+.pageTitle {
+  text-align: center;
+  color: var(--color-primario);
+  margin-bottom: 25px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: var(--color-texto-principal);
+}
+
+.formInput,
+.formTextarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-borde);
+  border-radius: 5px;
+  background-color: var(--color-secundario);
+  color: var(--color-texto-principal);
+  font-size: 1rem;
+}
+
+.formTextarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.formButton {
+  display: inline-block;
+  background-color: var(--color-primario);
+  color: var(--color-texto-secundario);
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.formButton:hover {
+  transform: scale(1.05);
+}
+
+.formButton:disabled {
+  background-color: var(--color-borde);
+  cursor: not-allowed;
+}
+
+/* Mensajes de estado (éxito o error) */
+.statusMessage {
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.statusSuccess {
+  color: var(--color-primario);
+}
+.statusError {
+  color: #e74c3c; /* Un color de error estándar */
+}
