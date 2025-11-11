@@ -32,7 +32,7 @@ return (
       <div className={styles.proyectosGrid}>
         {projects.map(project => (
           <ProjectCard 
-            key={project.id}
+            key={project._id}
             title={project.title} 
             description={project.description} 
           />

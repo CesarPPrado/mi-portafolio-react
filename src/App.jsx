@@ -7,6 +7,8 @@ import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import Proyectos from './pages/Proyectos.jsx'; // Importar página Proyectos
 import Contacto from './pages/Contacto.jsx';   // Importar página Contacto
+import Register from './pages/Register.jsx';  // Importar páginna Registro
+import Login from './pages/Login.jsx'; // Importar páginna Login
 import styles from './App.module.css'; // IMPORTAR EL NUEVO CSS MODULE
 
 function App() {
@@ -23,6 +25,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/proyectos" element={<Proyectos />} />
           <Route path="/contacto" element={<Contacto />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
       <Footer />

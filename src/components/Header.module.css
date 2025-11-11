@@ -56,3 +56,18 @@
 .themeToggle:hover {
   opacity: 0.9;
 }
+
+/* Estilo para el nuevo botón de Logout (similar al de tema) */
+.logoutButton {
+  background: none;
+  border: none;
+  color: var(--color-texto-enlaces); /* Usará azul o blanco según el tema */
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px 12px;
+}
+
+.logoutButton:hover {
+  color: var(--color-primario);
+}

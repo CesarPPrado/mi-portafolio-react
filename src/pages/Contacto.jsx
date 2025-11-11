@@ -1,6 +1,6 @@
 // src/pages/Contacto.jsx
 import { useState, useEffect } from 'react'; // 1. Importar useEffect
-import styles from './Contacto.module.css';
+import styles from './Form.module.css';
 
 const LOCAL_STORAGE_KEY = 'contactFormData'; // Definimos una llave
 
