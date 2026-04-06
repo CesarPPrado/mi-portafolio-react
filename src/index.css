@@ -1,47 +1,66 @@
 /* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+
 :root {
-  --color-primario: #007BFF;       /* Azul para títulos y botones */
-  --color-secundario: #ffffff;     /* Fondo de la página (Blanco) */
-  --color-terciario: #ffffff;      /* Fondo de tarjetas y header (Blanco) */
-  --color-texto-principal: #212529; /* Texto principal (Negro) */
-  --color-texto-secundario: #ffffff; /* Texto para botones (Blanco) */
-  --color-borde: #dee2e6;         /* Borde sutil para tarjetas */
-  --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra para tarjetas */
-  --color-texto-enlaces: var(--color-primario);
-  --color-texto-footer: var(--color-primario);
+  /* Paleta de Colores (Nativo Oscuro) */
+  --bg-main: #121212;        /* Fondo oscuro principal */
+  --bg-secondary: #18181C;   /* Fondo para el header o secciones alternativas */
+  --bg-card: #202024;        /* Fondo para las tarjetas de proyectos y formularios */
+  --bg-card-hover: #2A2A2E;  /* Fondo ligeramente más claro al pasar el ratón */
+  
+  --accent-blue: #0078F2;    /* El azul vibrante característico de Epic */
+  --accent-hover: #005BB5;   /* Un azul más oscuro para los hovers de botones */
+  
+  --text-primary: #F5F5F5;   /* Texto principal (blanco suave) */
+  --text-secondary: #A0A0A0; /* Texto secundario (gris para subtítulos) */
+  --border-color: #333336;   /* Gris oscuro para divisiones sutiles */
+  
+  /* Radios de borde sutiles */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* Transiciones suaves */
+  --transition-fast: 0.2s ease-in-out;
 }
 
-/* Variables para el Modo Oscuro */
-.dark {
-  --color-primario: #007BFF;       /* Azul (se mantiene) */
-  --color-secundario: #033159;     /* Fondo de la página (Azul Oscuro) */
-  --color-terciario: #033159;      /* Fondo de tarjetas y header (Azul Oscuro) */
-  --color-texto-principal: #ffffff; /* Texto principal (Blanco) */
-  --color-texto-secundario: #ffffff; /* Texto para botones (Blanco) */
-  --color-borde: #007BFF;         /* Borde Azul para tarjetas */
-  --shadow-card: none;             /* Sin sombra */
-  --color-texto-enlaces: var(--color-texto-principal);
-  --color-texto-footer: var(--color-borde);
-}
-
-/* Reseteo y estilos base */
+/* Reseteo básico y aplicación del estilo al documento */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* --- NUEVA CLASE PARA TÍTULOS DE PÁGINA --- */
-.page-title {
-  /* 1. Usa la variable de color de enlaces (Azul/Blanco) */
-  color: var(--color-texto-enlaces);
+a {
+  text-decoration: none;
+  color: var(--accent-blue);
+  transition: color var(--transition-fast);
+}
 
-  /* 2. Mantiene los estilos que ya tenías */
+a:hover {
+  color: var(--accent-hover);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition-fast);
+}
+
+/* --- CLASE PARA TÍTULOS DE PÁGINA ADAPTADA --- */
+.page-title {
+  color: var(--text-primary);
   text-align: center;
-  margin: 30px 0; /* Un margen vertical unificado */
+  margin: 30px 0;
+  font-weight: 700;
+  letter-spacing: -0.5px; /* Le da un toque más moderno a los títulos */
 }

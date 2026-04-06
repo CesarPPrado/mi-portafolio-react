@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <Hero />
-      <ProjectsGrid />
+      <ProjectsGrid showTitle={false} />
     </>
   );
 }

@@ -1,36 +1,56 @@
 /* src/components/Hero.module.css */
 .hero {
-    background-color: var(--color-terciario);
-    border: 1px solid var(--color-borde);
-    border-radius: 8px;
-    padding: 40px;
-    margin: 40px auto; /* Margen para centrar y separar */
-    max-width: 800px;
-    text-align: center;
-    box-shadow: var(--shadow-card);
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-md);
+    padding: 60px 40px;
+    margin: 40px auto;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(74, 74, 90, 0.2) 0%, transparent 100%);
+  pointer-events: none;
+}
+
 .hero h2 {
-    font-size: 2.5rem; /* rem es una unidad de medida responsiva */
-    margin-bottom: 15px;
-    color: var(--color-primario);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--text-primary);
+    font-weight: 700;
+    line-height: 1.1;
+    z-index: 1;
 }
+
 .hero p {
-    color: var(--color-texto-principal);
-    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    z-index: 1;
 }
-.hero a {
-    /* Estilos del botón */
+
+.heroButton {
     display: inline-block;
-    background-color: var(--color-primario);
-    color: var(--color-texto-secundario);
-    padding: 12px 24px;
+    background-color: var(--text-primary);
+    color: #000;
+    padding: 14px 28px;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: transform 0.2s ease-in-out; /* Una pequeña transición */
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    z-index: 1;
 }
-.hero a:hover {
-    transform: scale(1.05); /* Agranda el botón ligeramente al pasar el cursor */
+
+.heroButton:hover {
+    background-color: rgba(255, 255, 255, 0.8);
 }

@@ -1,73 +1,179 @@
 /* src/components/Header.module.css */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    /* --- CAMBIOS CLAVE --- */
-    background-color: var(--color-terciario); /* USA VARIABLE */
-    border-bottom: 2px solid var(--color-borde);   /* USA VARIABLE */
-    box-shadow: var(--shadow-card);            /* USA VARIABLE */
-    /* --- FIN DE CAMBIOS --- */
-}
-
-.logoLink, .logoLink:visited {
-  color: var(--color-primario);
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.header nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  height: 80px;
+  background-color: var(--bg-main); /* #121212 */
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.header nav li {
+/* Left Section */
+.leftSection {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.logoContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-right: 15px;
+}
+
+.logoIcon {
+  font-size: 2rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 15px;
+}
+
+.epicShield {
+  display: inline-block;
+  transform: scale(1.5);
+}
+
+/* Hover Menu */
+.megaMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  padding: 24px;
+  width: max-content;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-fast);
+}
+
+.logoContainer:hover .megaMenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.megaMenuColumns {
+  display: flex;
+  gap: 40px;
+}
+
+.megaMenuColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.megaMenuColumn h3 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: 4px;
+  display: inline-block;
+}
+
+.megaMenuColumn a {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.megaMenuColumn a:hover {
+  color: var(--text-primary);
+}
+
+/* Main Navigation */
+.mainNav {
+  display: flex;
+  height: 100%;
   margin-left: 20px;
 }
 
-.header nav a, .header nav a:visited {
-  color: var(--color-texto-enlaces); /* CAMBIO DE VARIABLE */
+.mainNav a {
+  color: var(--text-secondary);
   text-decoration: none;
-  font-weight: bold;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-fast);
 }
 
-.header nav a:hover {
-  color: var(--color-primario);
+.mainNav a:hover {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-blue);
 }
 
-.themeToggle {
-  /* --- CAMBIOS CLAVE --- */
-  background-color: var(--color-primario);
-  color: var(--color-texto-secundario); /* USA VARIABLE */
-  /* --- FIN DE CAMBIOS --- */
-  border: none;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
+/* Right Section */
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 100%;
+}
+
+.authLinks {
+  display: flex;
+  align-items: center;
+}
+
+.iconLink {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.9rem;
 }
 
-.themeToggle:hover {
-  opacity: 0.9;
+.iconLink:hover {
+  color: var(--text-primary);
 }
 
-/* Estilo para el nuevo botón de Logout (similar al de tema) */
 .logoutButton {
-  background: none;
-  border: none;
-  color: var(--color-texto-enlaces); /* Usará azul o blanco según el tema */
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 1rem;
-  padding: 8px 12px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }
 
 .logoutButton:hover {
-  color: var(--color-primario);
+  color: var(--text-primary);
+}
+
+/* Download Button */
+.downloadButton {
+  background-color: var(--accent-blue);
+  color: #fff;
+  padding: 0 20px;
+  height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+
+.downloadButton:hover {
+  background-color: var(--accent-hover);
+  color: #fff;
 }

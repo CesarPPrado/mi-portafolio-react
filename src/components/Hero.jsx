@@ -1,15 +1,18 @@
 // src/components/Hero.jsx
+import { Link } from 'react-router-dom';
 import styles from './Hero.module.css'; // Importamos los estilos
+
 function Hero() {
   // Aplicamos las clases usando el objeto styles
   return (
     <section className={styles.hero}>
-      <h2 className={styles.heroTitle}>Desarrollador de Software</h2>
+      <h2>Desarrollador de Software</h2>
       <p>
         Hola, soy César Prado. Un apasionado desarrollador en formación, enfocado en crear soluciones de software eficientes y escalables.
       </p>
-      <a href="#" className={styles.heroButton}>Mis Proyectos</a>
+      <Link to="/proyectos" className={styles.heroButton}>Mis Proyectos</Link>
     </section>
   );
 }
+
 export default Hero;
