@@ -122,6 +122,52 @@
   padding: 12px;
 }
 
+.rowGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.rowGroup .formGroup {
+  margin-bottom: 0;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  font-size: 13px;
+  color: #a0a0a0;
+  line-height: 1.5;
+}
+
+.checkboxGroup input[type="checkbox"] {
+  margin-right: 12px;
+  margin-top: 2px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-acento, #0078f2);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.checkboxLabel {
+  cursor: pointer;
+  color: #f5f5f5;
+  font-size: 13px;
+}
+
+.checkboxLabel a {
+  color: #f5f5f5;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.checkboxLabel a:hover {
+  color: var(--color-acento, #0078f2);
+}
+
 .formButton {
   display: block;
   width: 100%;
@@ -272,4 +318,81 @@
   background-color: rgba(231, 76, 60, 0.1);
   color: #e74c3c;
   border: 1px solid rgba(231, 76, 60, 0.3);
+}
+
+/* Input with Actions (Eye, Tooltip) */
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputWrapper .formInput {
+  padding-right: 80px; /* Make room for icons */
+}
+
+.inputActions {
+  position: absolute;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5f5f5;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.iconButton:hover {
+  opacity: 1;
+}
+
+.tooltipContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.tooltip {
+  position: absolute;
+  right: -8px; /* Align right to avoid overflow */
+  top: 32px; /* Below the icon */
+  background-color: #333333;
+  color: #f5f5f5;
+  padding: 16px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Tooltip caret */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 12px;
+  border-width: 0 6px 6px 6px;
+  border-style: solid;
+  border-color: transparent transparent #333333 transparent;
+}
+
+.tooltipContainer:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
 }
