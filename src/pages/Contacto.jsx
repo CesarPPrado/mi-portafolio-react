@@ -63,63 +63,65 @@ function Contacto() {
 
   // ... (tu JSX del 'return' sigue siendo exactamente el mismo) ...
   return (
-    <div className={styles.contactContainer}>
-      <h1 className={styles.pageTitle}>Página de Contacto</h1>
-      <p style={{ textAlign: 'center', marginBottom: '20px' }}>
-        ¿Tienes alguna pregunta o propuesta? ¡Envíame un mensaje!
-      </p>
-
-      <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label htmlFor="name">Nombre</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className={styles.formInput}
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={styles.formGroup}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            className={styles.formInput}
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className={styles.formGroup}>
-          <label htmlFor="message">Mensaje</label>
-          <textarea
-            id="message"
-            name="message"
-            className={styles.formTextarea}
-            value={formData.message}
-            onChange={handleChange}
-            required
-          ></textarea>
-        </div>
-
-        <button type="submit" className={styles.formButton} disabled={isLoading}>
-          {isLoading ? 'Enviando...' : 'Enviar Mensaje'}
-        </button>
-      </form>
-
-      {statusMessage.text && (
-        <p className={`${styles.statusMessage} ${
-            statusMessage.type === 'success' ? styles.statusSuccess : styles.statusError
-          }`}>
-          {statusMessage.text}
+    <div className={styles.pageWrapper}>
+      <div className={styles.contactContainer}>
+        <h1 className={styles.pageTitle}>Página de Contacto</h1>
+        <p style={{ textAlign: 'center', marginBottom: '20px' }}>
+          ¿Tienes alguna pregunta o propuesta? ¡Envíame un mensaje!
         </p>
-      )}
+
+        <form onSubmit={handleSubmit}>
+          <div className={styles.formGroup}>
+            <label htmlFor="name">Nombre</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className={styles.formInput}
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className={styles.formInput}
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <label htmlFor="message">Mensaje</label>
+            <textarea
+              id="message"
+              name="message"
+              className={styles.formTextarea}
+              value={formData.message}
+              onChange={handleChange}
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" className={styles.formButton} disabled={isLoading}>
+            {isLoading ? 'Enviando...' : 'Enviar Mensaje'}
+          </button>
+        </form>
+
+        {statusMessage.text && (
+          <p className={`${styles.statusMessage} ${
+              statusMessage.type === 'success' ? styles.statusSuccess : styles.statusError
+            }`}>
+            {statusMessage.text}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

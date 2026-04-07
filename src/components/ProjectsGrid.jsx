@@ -10,8 +10,8 @@ function ProjectsGrid({ showTitle = true }) {
   // 3. Usar "useEffect" para ejecutar código cuando el componente se monta.
   //    El arreglo vacío al final `[]` asegura que esto se ejecute solo una vez.
   useEffect(() => {
-    // 4. Usar la API fetch del navegador para llamar a nuestro backend
-    fetch(`${import.meta.env.VITE_API_URL}/api/proyectos`)
+    // 4. Usar la API fetch del navegador para llamar a nuestro backend (nuevo endpoint)
+    fetch(`${import.meta.env.VITE_API_URL}/api/projects`)
       .then(response => response.json()) // Convertir la respuesta a JSON
       .then(data => {
         // 5. Guardar los datos de la API en nuestro estado
@@ -32,9 +32,10 @@ return (
       <div className={styles.proyectosGrid}>
         {projects.map(project => (
           <ProjectCard 
-            key={project._id}
+            key={project.id || project._id} // Ahora usamos .id (o _id en caso de MongoDB)
             title={project.title} 
             description={project.description} 
+            imageUrl={project.imageUrl} // Pasamos también la imagen
           />
         ))}
       </div>
