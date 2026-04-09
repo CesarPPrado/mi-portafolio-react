@@ -27,7 +27,7 @@ function Header() {
                 <h3>Mis Proyectos</h3>
                 <Link to="/proyectos">Juego principal</Link>
                 <Link to="/proyectos">Portafolio</Link>
-                <Link to="/proyectos">Dashboard</Link>
+                <Link to="/analytics">Dashboard</Link>
               </div>
               <div className={styles.megaMenuColumn}>
                 <h3>Habilidades</h3>
@@ -49,6 +49,7 @@ function Header() {
         <nav className={styles.mainNav}>
           <Link to="/">INICIO</Link>
           <Link to="/proyectos">PROYECTOS</Link>
+          <Link to="/analytics">DASHBOARD</Link>
           <Link to="/contacto">CONTACTO</Link>
         </nav>
       </div>
