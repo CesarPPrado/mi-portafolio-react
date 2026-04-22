@@ -35,20 +35,6 @@ export default function Dashboard() {
 
   return (
     <div className="app-container">
-      <header className="app-header">
-        <div className="brand-title">
-          <Activity color="var(--accent-color)" size={28} />
-          <span>Analytics Core</span>
-        </div>
-        <div className="flex gap-4">
-          <button className="btn" title="Dashboard">
-            <LayoutDashboard size={20} />
-          </button>
-          <button className="btn" title="Configuración">
-            <Settings size={20} />
-          </button>
-        </div>
-      </header>
 
       <main className="main-content">
         <div className="mb-6">
@@ -67,11 +53,13 @@ export default function Dashboard() {
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {analyzedData.map((item, idx) => (
-                <div key={`${item.data.fileName}-${idx}`} style={{ animation: 'fade-in 0.5s ease-out' }}>
-                  <AIAnalysis 
-                    dataPayload={item.data} 
-                    dataType={item.type} 
-                    fileName={item.data.fileName}
+                <div key={`${item.fileName}-${idx}`} style={{ animation: 'fade-in 0.5s ease-out' }}>
+                  <AIAnalysis
+                    dataPayload={item.data}
+                    dataType={item.type}
+                    fileName={item.fileName}
+                    aiAnalysis={item.aiAnalysis}
+                    wordFreq={item.wordFreq}
                     onDismiss={() => handleDismiss(idx)}
                   />
                 </div>
@@ -83,7 +71,7 @@ export default function Dashboard() {
 
       {/* Floating Scroll to Top Button */}
       {showScrollTop && (
-        <button 
+        <button
           onClick={scrollToTop}
           style={{
             position: 'fixed',

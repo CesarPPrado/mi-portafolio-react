@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Bot, Sparkles, AlertTriangle, Send, X, FileText, PieChart as PieIcon, TrendingUp, FileCheck, BrainCircuit } from 'lucide-react';
-import { generateAnalysis } from '../../utils/aiAgent';
 import { 
   ResponsiveContainer, BarChart, Bar, LineChart, Line, AreaChart, Area, 
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, PieChart, Pie, Cell 
@@ -9,7 +8,7 @@ import {
 // Paleta de colores Premium "Top Tech Store"
 const COLORS = ['#a142f4', '#0078f2', '#00e676', '#ff1744', '#ffb300', '#00e5ff', '#ff4081'];
 
-export const AIAnalysis = ({ dataPayload, dataType, fileName, onDismiss }) => {
+export const AIAnalysis = ({ dataPayload, dataType, fileName, aiAnalysis, wordFreq, onDismiss }) => {
   const [sections, setSections] = useState({
     descriptive: "",
     diagnostic: "",
@@ -23,12 +22,11 @@ export const AIAnalysis = ({ dataPayload, dataType, fileName, onDismiss }) => {
   const [feedbackSent, setFeedbackSent] = useState(false);
 
   useEffect(() => {
-    const fetchAIAssistance = async () => {
+    if (aiAnalysis) {
       setIsLoading(true);
       setError(null);
       try {
-        const payloadForAI = dataType === 'excel' ? dataPayload.data : dataPayload.text;
-        const text = await generateAnalysis(payloadForAI, dataType);
+        const text = aiAnalysis;
         
         // Parsear el Markdown estructurado en 4 secciones
         const parsed = {
@@ -74,18 +72,14 @@ export const AIAnalysis = ({ dataPayload, dataType, fileName, onDismiss }) => {
       } finally {
         setIsLoading(false);
       }
-    };
-    
-    if (dataPayload) {
-      fetchAIAssistance();
     }
-  }, [dataPayload, dataType]);
+  }, [aiAnalysis]);
 
   // Lógica de Gráficos (Extracción y asignación dinámica)
   const renderChart = (cardIndex) => {
-    if (dataType === 'word') {
-      if (cardIndex === 1 && dataPayload.wordFreq) {
-        const topWords = dataPayload.wordFreq.slice(0, 10);
+    if (dataType === 'word' || dataType === 'pdf' || dataType === 'pptx') {
+      if (cardIndex === 1 && wordFreq) {
+        const topWords = wordFreq.slice(0, 10);
         return (
           <ResponsiveContainer width="100%" height={250}>
             <BarChart data={topWords} margin={{ top: 10, right: 10, left: 0, bottom: 20 }}>

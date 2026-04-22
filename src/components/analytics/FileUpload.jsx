@@ -1,7 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { UploadCloud, FileType, FileSpreadsheet } from 'lucide-react';
-import { parseExcelFile } from '../../utils/parseExcel';
-import { parseWordFile } from '../../utils/parseWord';
+import { UploadCloud, FileType, FileSpreadsheet, FileText, Presentation } from 'lucide-react';
 
 export const FileUpload = ({ onDataParsed }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -22,15 +20,39 @@ export const FileUpload = ({ onDataParsed }) => {
     setIsLoading(true);
     setError(null);
     try {
-      if (file.name.endsWith('.xlsx') || file.name.endsWith('.xls')) {
-        const data = await parseExcelFile(file);
-        onDataParsed({ type: 'excel', data });
-      } else if (file.name.endsWith('.docx')) {
-        const data = await parseWordFile(file);
-        onDataParsed({ type: 'word', data });
-      } else {
-        throw new Error("Formato no soportado. Por favor sube archivos .xlsx o .docx");
+      const validExtensions = ['.xlsx', '.xls', '.docx', '.pdf', '.pptx'];
+      const isValid = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+      
+      if (!isValid) {
+        throw new Error("Formato no soportado. Sube un archivo Excel, Word o PDF.");
       }
+
+      // Preparar el archivo para enviarlo al backend
+      const formData = new FormData();
+      formData.append('file', file);
+
+      // Usar la URL base de tu backend
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+      
+      const response = await fetch(`${API_URL}/api/analytics/upload`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || 'Error procesando el archivo en el servidor.');
+      }
+
+      // El backend ahora nos devuelve TODO masticado:
+      // result.aiAnalysis (texto markdown)
+      // result.type (excel, word, pdf, pptx)
+      // result.data (JSON de excel)
+      // result.wordFreq (Frecuencia de palabras)
+      
+      onDataParsed(result);
+
     } catch (err) {
       setError(err.message);
     } finally {
@@ -67,19 +89,21 @@ export const FileUpload = ({ onDataParsed }) => {
         <label htmlFor="file-upload" style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <UploadCloud size={64} className="upload-icon mb-4" />
           <h2 className="upload-title">Sube tus datos para analizar</h2>
-          <p className="upload-desc mt-4 mb-4 text-center" style={{maxWidth: '400px'}}>
+          <p className="upload-desc mt-4 mb-4 text-center" style={{maxWidth: '450px'}}>
             Arrastra tu archivo aquí o haz clic para buscar. 
             <br/><br/>
-            Soportamos documentos de <strong>Excel (.xlsx)</strong> para tendencias y <strong>Word (.docx)</strong> para minería de texto.
+            El Cerebro IA en el servidor soporta análisis profundo de:
           </p>
-          <div className="flex gap-4 mt-4">
-            <span className="flex items-center gap-2" style={{color: '#00e676'}}><FileSpreadsheet size={20}/> Excel</span>
-            <span className="flex items-center gap-2" style={{color: '#0078f2'}}><FileType size={20}/> Word</span>
+          <div className="flex gap-4 mt-2 mb-4 justify-center flex-wrap">
+            <span className="flex items-center gap-2" style={{color: '#00e676'}}><FileSpreadsheet size={18}/> Excel</span>
+            <span className="flex items-center gap-2" style={{color: '#0078f2'}}><FileType size={18}/> Word</span>
+            <span className="flex items-center gap-2" style={{color: '#ff1744'}}><FileText size={18}/> PDF</span>
+            <span className="flex items-center gap-2" style={{color: '#ffb300'}}><Presentation size={18}/> PPTX</span>
           </div>
           <input 
             id="file-upload" 
             type="file" 
-            accept=".xlsx,.xls,.docx" 
+            accept=".xlsx,.xls,.docx,.pdf,.pptx" 
             onChange={handleChange} 
             style={{ display: 'none' }} 
           />
@@ -91,7 +115,7 @@ export const FileUpload = ({ onDataParsed }) => {
           <div className="spinner">
             <UploadCloud size={40} />
           </div>
-          <p>Procesando archivo inteligentemente...</p>
+          <p>Enviando archivo al servidor IA...</p>
         </div>
       )}
 
