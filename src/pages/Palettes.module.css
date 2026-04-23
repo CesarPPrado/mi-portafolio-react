@@ -275,11 +275,21 @@
   border-radius: var(--radius-sm);
 }
 
-.colorInputValue {
+.colorInputValueInput {
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--text-primary);
-  padding-right: 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  outline: none;
+  width: 140px;
+  text-transform: uppercase;
+  transition: border-bottom var(--transition-fast);
+}
+
+.colorInputValueInput:focus {
+  border-bottom: 2px solid var(--accent-blue);
 }
 
 .modeButtons {
@@ -380,4 +390,30 @@
   padding: 0.5rem 1rem;
   border-radius: 20px;
   font-size: 0.9rem;
+}
+
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent-blue);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: toast-in 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes toast-in {
+  from {
+    bottom: -5rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 2rem;
+    opacity: 1;
+  }
 }

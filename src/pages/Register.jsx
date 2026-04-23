@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import styles from './Form.module.css';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { GoogleLogin } from '@react-oauth/google';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -15,6 +17,7 @@ function Register() {
   const [statusMessage, setStatusMessage] = useState({ text: '', type: '' });
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -55,6 +58,39 @@ function Register() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleGoogleSuccess = async (credentialResponse) => {
+    setIsLoading(true);
+    setStatusMessage({ text: 'Iniciando sesión con Google...', type: '' });
+
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/google`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ credential: credentialResponse.credential }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        login(result.token); 
+        setStatusMessage({ text: result.isNewUser ? 'Cuenta creada exitosamente con Google. Redirigiendo...' : 'Inicio de sesión exitoso. Redirigiendo...', type: 'success' });
+        setTimeout(() => {
+          navigate('/'); 
+        }, 2000);
+      } else {
+        throw new Error(result.message || 'Error al iniciar sesión con Google.');
+      }
+    } catch (error) {
+      setStatusMessage({ text: error.message, type: 'error' });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleGoogleError = () => {
+    setStatusMessage({ text: 'El registro con Google fue cancelado o falló.', type: 'error' });
   };
 
   return (
@@ -186,6 +222,19 @@ function Register() {
             {isLoading ? 'Registrando...' : 'Continuar'}
           </button>
         </form>
+
+        <div className={styles.divider}>Otras formas de registrarse</div>
+
+        <div className={styles.socialList} style={{ display: 'flex', justifyContent: 'center' }}>
+          <GoogleLogin
+            onSuccess={handleGoogleSuccess}
+            onError={handleGoogleError}
+            theme="filled_black"
+            shape="rectangular"
+            text="continue_with"
+            width="300"
+          />
+        </div>
 
         <div className={styles.formLinkContainer}>
           ¿Ya tienes una cuenta? <Link to="/login" className={styles.formLink}>Iniciar sesión</Link>

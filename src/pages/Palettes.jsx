@@ -132,9 +132,6 @@ function Palettes() {
                         style={{ backgroundColor: color }}
                       ></span>
                       <span className={styles.colorCode}>{color}</span>
-                      {copiedColor === color && (
-                        <span className={styles.copiedTag}>¡Copiado!</span>
-                      )}
                     </div>
                   ))}
                 </div>
@@ -152,11 +149,17 @@ function Palettes() {
               <div className={styles.colorInputWrapper}>
                 <input
                   type="color"
-                  value={baseColor}
+                  value={baseColor.startsWith('#') && baseColor.length === 7 ? baseColor : '#000000'}
                   onChange={(e) => setBaseColor(e.target.value)}
                   className={styles.colorInput}
                 />
-                <span className={styles.colorInputValue}>{baseColor.toUpperCase()}</span>
+                <input
+                  type="text"
+                  value={baseColor}
+                  onChange={(e) => setBaseColor(e.target.value)}
+                  className={styles.colorInputValueInput}
+                  placeholder="#HEX / RGB"
+                />
               </div>
             </div>
 
@@ -203,9 +206,6 @@ function Palettes() {
                     style={{ backgroundColor: color }}
                   ></span>
                   <span className={styles.colorCode}>{color}</span>
-                  {copiedColor === color && (
-                    <span className={styles.copiedTag}>¡Copiado!</span>
-                  )}
                 </div>
               ))}
             </div>
@@ -228,6 +228,12 @@ function Palettes() {
               </button>
             </div>
           </div>
+        </div>
+      )}
+
+      {copiedColor && (
+        <div className={styles.toast}>
+          ¡Color {copiedColor} copiado!
         </div>
       )}
     </div>

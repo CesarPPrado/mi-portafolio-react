@@ -49,8 +49,8 @@ function Header() {
               <div className={styles.megaMenuColumn}>
                 <h3>Conecta</h3>
                 <Link to="/contacto">Contáctame</Link>
-                <a href="#">LinkedIn</a>
-                <a href="#">GitHub</a>
+                <a href="https://www.linkedin.com/in/cesarpradoprado/" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://github.com/CesarPPrado" target="_blank" rel="noreferrer">GitHub</a>
               </div>
             </div>
           </div>
