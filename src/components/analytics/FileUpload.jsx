@@ -20,7 +20,7 @@ export const FileUpload = ({ onDataParsed }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const validExtensions = ['.xlsx', '.xls', '.docx', '.pdf', '.pptx'];
+      const validExtensions = ['.xlsx', '.xls', '.csv', '.docx', '.pdf', '.pptx', '.ppt'];
       const isValid = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
       
       if (!isValid) {
@@ -85,8 +85,10 @@ export const FileUpload = ({ onDataParsed }) => {
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
         onDrop={handleDrop}
+        onClick={() => document.getElementById('file-upload').click()}
+        style={{ cursor: 'pointer' }}
       >
-        <label htmlFor="file-upload" style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <UploadCloud size={64} className="upload-icon mb-4" />
           <h2 className="upload-title">Sube tus datos para analizar</h2>
           <p className="upload-desc mt-4 mb-4 text-center" style={{maxWidth: '450px'}}>
@@ -103,11 +105,11 @@ export const FileUpload = ({ onDataParsed }) => {
           <input 
             id="file-upload" 
             type="file" 
-            accept=".xlsx,.xls,.docx,.pdf,.pptx" 
+            accept=".xlsx,.xls,.csv,.docx,.pdf,.pptx,.ppt" 
             onChange={handleChange} 
             style={{ display: 'none' }} 
           />
-        </label>
+        </div>
       </div>
       
       {isLoading && (

@@ -395,4 +395,90 @@
 .tooltipContainer:hover .tooltip {
   opacity: 1;
   visibility: visible;
+}
+
+/* --- Animated Input (Wave Group) --- */
+.waveGroup {
+  position: relative;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.waveInput,
+.waveTextarea {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+  color: #f5f5f5;
+  box-sizing: border-box;
+}
+
+.waveTextarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.waveInput:focus,
+.waveTextarea:focus {
+  outline: none;
+}
+
+.waveLabel {
+  color: #999;
+  font-size: 16px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  display: flex;
+}
+
+.waveLabelChar {
+  transition: 0.2s ease all;
+  transition-delay: calc(var(--index) * .03s);
+}
+
+.waveInput:focus ~ .waveLabel .waveLabelChar,
+.waveInput:valid ~ .waveLabel .waveLabelChar,
+.waveTextarea:focus ~ .waveLabel .waveLabelChar,
+.waveTextarea:valid ~ .waveLabel .waveLabelChar {
+  transform: translateY(-20px);
+  font-size: 13px;
+  color: var(--color-acento, #0078f2);
+}
+
+.waveBar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.waveBar:before, .waveBar:after {
+  content: '';
+  height: 2px;
+  width: 0;
+  bottom: 0px;
+  position: absolute;
+  background: #0078f2;
+  transition: 0.2s ease all;
+}
+
+.waveBar:before {
+  left: 50%;
+}
+
+.waveBar:after {
+  right: 50%;
+}
+
+.waveInput:focus ~ .waveBar:before,
+.waveInput:focus ~ .waveBar:after,
+.waveTextarea:focus ~ .waveBar:before,
+.waveTextarea:focus ~ .waveBar:after {
+  width: 50%;
 }

@@ -11,6 +11,7 @@ import Register from './pages/Register.jsx';  // Importar páginna Registro
 import Login from './pages/Login.jsx'; // Importar páginna Login
 import Analytics from './pages/Analytics.jsx'; // Importar página Analytics
 import Palettes from './pages/Palettes.jsx'; // Importar nueva página Paletas
+import Profile from './pages/Profile.jsx'; // Importar página Perfil
 import styles from './App.module.css'; // IMPORTAR EL NUEVO CSS MODULE
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/paletas" element={<Palettes />} />
+          <Route path="/perfil" element={<Profile />} />
         </Routes>
       </main>
       <Footer />

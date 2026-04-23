@@ -96,29 +96,43 @@ function Login() {
         <h1 className={styles.pageTitle}>Iniciar Sesión</h1>
         
         <form onSubmit={handleSubmit}>
-          <div className={styles.formGroup}>
-            <label htmlFor="email">Dirección de correo electrónico</label>
+          <div className={styles.waveGroup}>
             <input
               type="email"
               id="email"
               name="email"
-              className={styles.formInput}
+              className={styles.waveInput}
               value={formData.email}
               onChange={handleChange}
               required
             />
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Correo Electrónico').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </label>
           </div>
-          <div className={styles.formGroup}>
-            <label htmlFor="password">Contraseña</label>
+          <div className={styles.waveGroup}>
             <input
               type="password"
               id="password"
               name="password"
-              className={styles.formInput}
+              className={styles.waveInput}
               value={formData.password}
               onChange={handleChange}
               required
             />
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Contraseña').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>
+                  {char}
+                </span>
+              ))}
+            </label>
           </div>
           <button type="submit" className={styles.formButton} disabled={isLoading}>
             {isLoading ? 'Iniciando...' : 'Continuar'}
@@ -127,15 +141,17 @@ function Login() {
 
         <div className={styles.divider}>Otras formas de iniciar sesión</div>
 
-        <div className={styles.socialList} style={{ display: 'flex', justifyContent: 'center' }}>
-          <GoogleLogin
-            onSuccess={handleGoogleSuccess}
-            onError={handleGoogleError}
-            theme="filled_black"
-            shape="rectangular"
-            text="continue_with"
-            width="300"
-          />
+        <div className={styles.socialList} style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', margin: '0 auto' }}>
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+              theme="filled_black"
+              shape="rectangular"
+              text="continue_with"
+              width="300"
+            />
+          </div>
         </div>
 
         <div className={styles.formLinkContainer}>

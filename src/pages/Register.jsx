@@ -101,118 +101,141 @@ function Register() {
 
         <form onSubmit={handleSubmit}>
           
-          <div className={styles.formGroup}>
-            <label htmlFor="email">Dirección de correo electrónico</label>
+          <div className={styles.waveGroup}>
             <input
               type="email"
               id="email"
               name="email"
-              className={styles.formInput}
+              className={styles.waveInput}
               value={formData.email}
               onChange={handleChange}
               required
             />
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Correo Electrónico').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </label>
           </div>
 
           <div className={styles.rowGroup}>
-            <div className={styles.formGroup}>
-              <label htmlFor="firstName">Nombre</label>
+            <div className={styles.waveGroup}>
               <input
                 type="text"
                 id="firstName"
                 name="firstName"
-                className={styles.formInput}
+                className={styles.waveInput}
                 value={formData.firstName}
                 onChange={handleChange}
                 required
               />
+              <span className={styles.waveBar} />
+              <label className={styles.waveLabel}>
+                {Array.from('Nombre').map((char, index) => (
+                  <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>{char}</span>
+                ))}
+              </label>
             </div>
-            <div className={styles.formGroup}>
-              <label htmlFor="lastName">Apellidos</label>
+            <div className={styles.waveGroup}>
               <input
                 type="text"
                 id="lastName"
                 name="lastName"
-                className={styles.formInput}
+                className={styles.waveInput}
                 value={formData.lastName}
                 onChange={handleChange}
                 required
               />
+              <span className={styles.waveBar} />
+              <label className={styles.waveLabel}>
+                {Array.from('Apellidos').map((char, index) => (
+                  <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>{char}</span>
+                ))}
+              </label>
             </div>
           </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="password">Crear contraseña</label>
-            <div className={styles.inputWrapper}>
-              <input
-                type={showPassword ? "text" : "password"}
-                id="password"
-                name="password"
-                className={styles.formInput}
-                value={formData.password}
-                onChange={handleChange}
-                required
-                minLength="6"
-              />
-              <div className={styles.inputActions}>
-                <button 
-                  type="button" 
-                  className={styles.iconButton} 
-                  onClick={() => setShowPassword(!showPassword)}
-                  aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
-                >
-                  {showPassword ? (
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" />
-                      <line x1="1" y1="1" x2="23" y2="23" />
-                    </svg>
-                  ) : (
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  )}
-                </button>
-                <div className={styles.tooltipContainer}>
-                  <div className={styles.iconButton}>
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="12"></line>
-                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                    </svg>
-                  </div>
-                  <div className={styles.tooltip}>
-                    Las contraseñas deben tener más de 7 caracteres, contener al menos 1 número y 1 letra y no contener ningún espacio en blanco.
-                  </div>
+          <div className={styles.waveGroup}>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              className={styles.waveInput}
+              value={formData.password}
+              onChange={handleChange}
+              required
+              minLength="6"
+            />
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Crear contraseña').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>{char === ' ' ? '\u00A0' : char}</span>
+              ))}
+            </label>
+            <div className={styles.inputActions} style={{ top: '10px' }}>
+              <button 
+                type="button" 
+                className={styles.iconButton} 
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Ocultar contraseña" : "Mostrar contraseña"}
+              >
+                {showPassword ? (
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                )}
+              </button>
+              <div className={styles.tooltipContainer}>
+                <div className={styles.iconButton}>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                </div>
+                <div className={styles.tooltip}>
+                  Las contraseñas deben tener más de 7 caracteres, contener al menos 1 número y 1 letra y no contener ningún espacio en blanco.
                 </div>
               </div>
             </div>
           </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="displayName">Añadir un nombre en pantalla</label>
-            <div className={styles.inputWrapper}>
-              <input
-                type="text"
-                id="displayName"
-                name="displayName"
-                className={styles.formInput}
-                value={formData.displayName}
-                onChange={handleChange}
-                required
-              />
-              <div className={styles.inputActions}>
-                <div className={styles.tooltipContainer}>
-                  <div className={styles.iconButton}>
-                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="12"></line>
-                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                    </svg>
-                  </div>
-                  <div className={styles.tooltip}>
-                    Tu nombre en pantalla debe tener entre 3 y 16 caracteres, y puede contener letras, números y guiones, puntos, guiones bajos y espacios no consecutivos.
-                  </div>
+          <div className={styles.waveGroup}>
+            <input
+              type="text"
+              id="displayName"
+              name="displayName"
+              className={styles.waveInput}
+              value={formData.displayName}
+              onChange={handleChange}
+              required
+            />
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Nombre en pantalla').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>{char === ' ' ? '\u00A0' : char}</span>
+              ))}
+            </label>
+            <div className={styles.inputActions} style={{ top: '10px' }}>
+              <div className={styles.tooltipContainer}>
+                <div className={styles.iconButton}>
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                </div>
+                <div className={styles.tooltip}>
+                  Tu nombre en pantalla debe tener entre 3 y 16 caracteres, y puede contener letras, números y guiones, puntos, guiones bajos y espacios no consecutivos.
                 </div>
               </div>
             </div>
@@ -225,15 +248,17 @@ function Register() {
 
         <div className={styles.divider}>Otras formas de registrarse</div>
 
-        <div className={styles.socialList} style={{ display: 'flex', justifyContent: 'center' }}>
-          <GoogleLogin
-            onSuccess={handleGoogleSuccess}
-            onError={handleGoogleError}
-            theme="filled_black"
-            shape="rectangular"
-            text="continue_with"
-            width="300"
-          />
+        <div className={styles.socialList} style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', margin: '0 auto' }}>
+            <GoogleLogin
+              onSuccess={handleGoogleSuccess}
+              onError={handleGoogleError}
+              theme="filled_black"
+              shape="rectangular"
+              text="continue_with"
+              width="300"
+            />
+          </div>
         </div>
 
         <div className={styles.formLinkContainer}>

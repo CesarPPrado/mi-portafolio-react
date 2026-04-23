@@ -383,6 +383,23 @@
   cursor: not-allowed;
 }
 
+.saveBtn {
+  background-color: var(--color-acento, #0078f2);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, filter 0.2s;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.saveBtn:hover {
+  background-color: #0084ff;
+  filter: brightness(1.1);
+}
+
 .colorCountBadge {
   color: var(--text-secondary);
   font-weight: 600;

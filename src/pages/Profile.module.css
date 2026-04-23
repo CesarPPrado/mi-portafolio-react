@@ -1,0 +1,232 @@
+.profileContainer {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #f5f5f5;
+  min-height: calc(100vh - 80px);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #202024;
+  padding: 30px;
+  border-radius: 12px;
+  margin-bottom: 40px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-acento, #0078f2);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.name {
+  margin: 0 0 5px 0;
+  font-size: 24px;
+}
+
+.email {
+  margin: 0;
+  color: #a0a0a0;
+}
+
+.logoutBtn {
+  background-color: transparent;
+  color: #e74c3c;
+  border: 1px solid #e74c3c;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logoutBtn:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  color: #a0a0a0;
+  font-size: 16px;
+  padding: 10px 0;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.tab:hover {
+  color: #fff;
+}
+
+.activeTab {
+  color: var(--color-acento, #0078f2);
+  font-weight: bold;
+}
+
+.activeTab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-acento, #0078f2);
+}
+
+.palettesSection h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+
+.emptyMessage {
+  color: #a0a0a0;
+  text-align: center;
+  padding: 50px;
+  background-color: #202024;
+  border-radius: 8px;
+}
+
+/* Visual Grid */
+.palettesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.paletteCard {
+  background-color: #202024;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+
+.paletteCard:hover {
+  transform: translateY(-5px);
+}
+
+.colorsRow {
+  display: flex;
+  height: 120px;
+}
+
+.colorBlock {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: flex 0.3s;
+  cursor: pointer;
+}
+
+.colorBlock:hover {
+  flex: 2;
+}
+
+.colorHex {
+  opacity: 0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: rgba(0,0,0,0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: opacity 0.3s;
+}
+
+.colorBlock:hover .colorHex {
+  opacity: 1;
+}
+
+.paletteInfo {
+  padding: 20px;
+}
+
+.paletteInfo h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.paletteInfo p {
+  margin: 0;
+  color: #a0a0a0;
+  font-size: 14px;
+}
+
+/* Edit Table */
+.tableContainer {
+  background-color: #202024;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table th, .table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #333;
+}
+
+.table th {
+  color: #a0a0a0;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.table tbody tr:hover {
+  background-color: #2a2a2e;
+}
+
+.miniColors {
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 120px;
+  height: 24px;
+}
+
+.miniColor {
+  flex: 1;
+}
+
+.deleteBtn {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.deleteBtn:hover {
+  background-color: rgba(231, 76, 60, 0.3);
+}

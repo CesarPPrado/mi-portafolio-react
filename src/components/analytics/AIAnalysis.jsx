@@ -223,14 +223,16 @@ export const AIAnalysis = ({ dataPayload, dataType, fileName, aiAnalysis, wordFr
       {!isLoading && !error && (
         <div className="ai-report-wide-grid fade-in" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
           
-          {/* Card 1: Descriptivo */}
+          {/* Card 1 */}
           <div className="card" style={{ background: 'var(--bg-secondary)', borderTop: '4px solid #0078f2' }}>
             <div className="flex items-center gap-2 mb-4">
               <PieIcon color="#0078f2" size={24} />
-              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>1. Análisis Descriptivo</h3>
+              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>
+                {dataType === 'excel' ? '1. Análisis Descriptivo' : '1. Resumen Ejecutivo'}
+              </h3>
             </div>
             <div className="wide-card-content">
-              <div className="chart-section">{renderChart(1)}</div>
+              {renderChart(1) && <div className="chart-section">{renderChart(1)}</div>}
               <div 
                 className="text-section"
                 style={{ color: '#d0d0d0', lineHeight: 1.6 }}
@@ -239,14 +241,16 @@ export const AIAnalysis = ({ dataPayload, dataType, fileName, aiAnalysis, wordFr
             </div>
           </div>
 
-          {/* Card 2: Diagnóstico */}
+          {/* Card 2 */}
           <div className="card" style={{ background: 'var(--bg-secondary)', borderTop: '4px solid #a142f4' }}>
             <div className="flex items-center gap-2 mb-4">
               <BrainCircuit color="#a142f4" size={24} />
-              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>2. Análisis Diagnóstico</h3>
+              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>
+                {dataType === 'excel' ? '2. Análisis Diagnóstico' : '2. Temas y Entidades Clave'}
+              </h3>
             </div>
             <div className="wide-card-content">
-              <div className="chart-section">{renderChart(2)}</div>
+              {renderChart(2) && <div className="chart-section">{renderChart(2)}</div>}
               <div 
                 className="text-section"
                 style={{ color: '#d0d0d0', lineHeight: 1.6 }}
@@ -255,14 +259,16 @@ export const AIAnalysis = ({ dataPayload, dataType, fileName, aiAnalysis, wordFr
             </div>
           </div>
 
-          {/* Card 3: Predictivo */}
+          {/* Card 3 */}
           <div className="card" style={{ background: 'var(--bg-secondary)', borderTop: '4px solid #00e676' }}>
             <div className="flex items-center gap-2 mb-4">
               <TrendingUp color="#00e676" size={24} />
-              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>3. Análisis Predictivo</h3>
+              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>
+                {dataType === 'excel' ? '3. Análisis Predictivo' : '3. Análisis de Tono y Sentimiento'}
+              </h3>
             </div>
             <div className="wide-card-content">
-              <div className="chart-section">{renderChart(3)}</div>
+              {renderChart(3) && <div className="chart-section">{renderChart(3)}</div>}
               <div 
                 className="text-section"
                 style={{ color: '#d0d0d0', lineHeight: 1.6 }}
@@ -271,14 +277,16 @@ export const AIAnalysis = ({ dataPayload, dataType, fileName, aiAnalysis, wordFr
             </div>
           </div>
 
-          {/* Card 4: Prescriptivo */}
+          {/* Card 4 */}
           <div className="card" style={{ background: 'var(--bg-secondary)', borderTop: '4px solid #ffb300' }}>
             <div className="flex items-center gap-2 mb-4">
               <FileCheck color="#ffb300" size={24} />
-              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>4. Análisis Prescriptivo</h3>
+              <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>
+                {dataType === 'excel' ? '4. Análisis Prescriptivo' : '4. Puntos de Acción Recomendados'}
+              </h3>
             </div>
             <div className="wide-card-content">
-              <div className="chart-section">{renderChart(4)}</div>
+              {renderChart(4) && <div className="chart-section">{renderChart(4)}</div>}
               <div 
                 className="text-section"
                 style={{ color: '#d0d0d0', lineHeight: 1.6 }}

@@ -71,42 +71,63 @@ function Contacto() {
         </p>
 
         <form onSubmit={handleSubmit}>
-          <div className={styles.formGroup}>
-            <label htmlFor="name">Nombre</label>
+          <div className={styles.waveGroup}>
             <input
               type="text"
               id="name"
               name="name"
-              className={styles.formInput}
+              className={styles.waveInput}
               value={formData.name}
               onChange={handleChange}
               required
             />
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Nombre').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </label>
           </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="email">Email</label>
+          <div className={styles.waveGroup}>
             <input
               type="email"
               id="email"
               name="email"
-              className={styles.formInput}
+              className={styles.waveInput}
               value={formData.email}
               onChange={handleChange}
               required
             />
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Correo Electrónico').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </label>
           </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="message">Mensaje</label>
+          <div className={styles.waveGroup} style={{ marginTop: '30px' }}>
             <textarea
               id="message"
               name="message"
-              className={styles.formTextarea}
+              className={styles.waveTextarea}
               value={formData.message}
               onChange={handleChange}
               required
             ></textarea>
+            <span className={styles.waveBar} />
+            <label className={styles.waveLabel}>
+              {Array.from('Mensaje').map((char, index) => (
+                <span key={index} className={styles.waveLabelChar} style={{ '--index': index }}>
+                  {char === ' ' ? '\u00A0' : char}
+                </span>
+              ))}
+            </label>
           </div>
 
           <button type="submit" className={styles.formButton} disabled={isLoading}>
